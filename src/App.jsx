@@ -25,6 +25,8 @@ function App() {
     .sort(() => Math.random() - 0.5)
     .map((card) => ({ ...card, id: Math.random() }))
 
+    setChoiceOne(null)
+    setChoiceTwo(null)
     setCards(shuffledCards)
     setTurns(0)
   }
@@ -61,6 +63,11 @@ function App() {
     setDisabled(false)
   }
 
+  // Start a new game automatically
+  useEffect(() => {
+    shuffleCards()
+  }, [])
+
   console.log(cards)
 
   return (
@@ -78,6 +85,7 @@ function App() {
           />
         ))}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   )
 }
